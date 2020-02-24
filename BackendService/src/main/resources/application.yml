@@ -9,5 +9,5 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate.hbm2ddl.auto: update
+    properties.hibernate.hbm2ddl.auto: none
     showSql: true
