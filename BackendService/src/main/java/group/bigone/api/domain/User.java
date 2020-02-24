@@ -1,11 +1,9 @@
 package group.bigone.api.domain;
 
-import com.sun.javafx.beans.IDProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 
@@ -25,5 +23,4 @@ public class User {
 
     @Column (nullable = false, length = 1000)
     private String userName;
-
 }
