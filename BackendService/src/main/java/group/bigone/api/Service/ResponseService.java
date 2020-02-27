@@ -53,11 +53,11 @@ public class ResponseService {
     }
 
     // 실패 결과만 처리하는 메소드
-    public CommonResult getFailResult() {
+    public CommonResult getFailResult(int code, String msg) {
         CommonResult result = new CommonResult();
         result.setSuccess(false);
-        result.setResultCode(CommonResponse.FAIL.getResultCode());
-        result.setResultMessage(CommonResponse.FAIL.getResultMessage());
+        result.setResultCode(code);
+        result.setResultMessage(msg);
         return result;
     }
 
