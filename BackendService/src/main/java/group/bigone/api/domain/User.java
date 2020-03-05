@@ -24,22 +24,21 @@ import java.util.stream.Collectors;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userNo;
+    private long userno;
 
     @Column (nullable = false, unique = true, length = 50)
-    private String userId;
+    private String userid;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false, length = 100)
     private String password;
 
     @Column (nullable = false, length = 100)
-    private String userName;
+    private String name;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -49,7 +48,7 @@ public class User implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Override
     public String getUsername() {
-        return this.userId;
+        return this.userid;
     }
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

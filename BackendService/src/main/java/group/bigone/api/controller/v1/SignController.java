@@ -30,27 +30,27 @@ public class SignController {
     private final ResponseService responseService;
     private final PasswordEncoder passwordEncoder;
 
-    @ApiOperation(value = "로그인", notes = "이메일 회원 로그인을 한다.")
+    @ApiOperation(value = "SignIn", notes = "Do signIn")
     @GetMapping(value = "/signin")
-    public SingleResult<String> signin(@ApiParam(value = "userID : Email", required = true) @RequestParam String id,
-                                       @ApiParam(value = "password", required = true) @RequestParam String password) {
-        User user = userJpaRepo.findByUserId(id).orElseThrow(CEmailSigninFailedException::new);
+    public SingleResult<String> signin(@ApiParam(value = "userEmail", required = true) @RequestParam String id,
+                                       @ApiParam(value = "passWord", required = true) @RequestParam String password) {
+        User user = userJpaRepo.findByUserid(id).orElseThrow(CEmailSigninFailedException::new);
         if (!passwordEncoder.matches(password, user.getPassword()))
             throw new CEmailSigninFailedException();
 
         return responseService.getSingleResult(jwtTokenProvider.createToken(user.getUsername(), user.getRoles()));
     }
 
-    @ApiOperation(value = "가입", notes = "회원가입을 한다.")
+    @ApiOperation(value = "SignUp", notes = "Do signUp")
     @GetMapping(value = "/signup")
-    public CommonResult signin(@ApiParam(value = "회원ID : 이메일", required = true) @RequestParam String id,
-                               @ApiParam(value = "비밀번호", required = true) @RequestParam String password,
-                               @ApiParam(value = "이름", required = true) @RequestParam String name) {
+    public CommonResult signin(@ApiParam(value = "userEmail", required = true) @RequestParam String id,
+                               @ApiParam(value = "passWord", required = true) @RequestParam String password,
+                               @ApiParam(value = "name", required = true) @RequestParam String name) {
 
         userJpaRepo.save(User.builder()
-                .userId(id)
+                .userid(id)
                 .password(passwordEncoder.encode(password))
-                .userName(name)
+                .name(name)
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
         return responseService.getSuccessResult();
