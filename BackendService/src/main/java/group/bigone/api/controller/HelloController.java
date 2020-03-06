@@ -1,35 +1,36 @@
 package group.bigone.api.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@Api(tags = {"HelloWord"})
+@RestController
+@RequestMapping(value = "/helloworld")
 public class HelloController {
-    /*
-    1. 화면에 helloworld가 출력됩니다.
-    */
-    @GetMapping(value = "/helloworld/string")
+
+    @ApiOperation(value = "String", notes = "print String")
     @ResponseBody
     public String helloworldString() {
         return "helloworld";
     }
-    /*
-    2. 화면에 {message:"helloworld"} 라고 출력됩니다.
-    */
-    @GetMapping(value = "/helloworld/json")
+
+    @ApiOperation(value = "Json", notes = "print Json")
     @ResponseBody
     public Hello helloworldJson() {
         Hello hello = new Hello();
         hello.message = "helloworld";
         return hello;
     }
-    /*
-    3. 화면에 helloworld.ftl의 내용이 출력됩니다.
-    */
-    @GetMapping(value = "/helloworld/page")
+
+    @ApiOperation(value = "Page", notes = "print Page")
+    @GetMapping(value = "/page")
     public String helloworld() {
         return "helloworld";
     }

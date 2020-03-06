@@ -9,8 +9,12 @@ spring:
     driver-class-name: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate.hbm2ddl.auto: update
-    showSql: true
+    properties.hibernate:
+      hbm2ddl.auto: update
+      format_sql: true
+      use_sql_comments : true
+    show_sql: true
+
   messages:
     basename: i18n/exception
     encoding: utf-8

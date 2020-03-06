@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collections;
 
-@Api(tags = {"1. Sign"})
+@Api(tags = {"Sign"})
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/v1")
@@ -32,7 +32,7 @@ public class SignController {
 
     @ApiOperation(value = "SignIn", notes = "Do signIn")
     @GetMapping(value = "/signin")
-    public SingleResult<String> signin(@ApiParam(value = "userEmail", required = true) @RequestParam String id,
+    public SingleResult<String> signin(@ApiParam(value = "email", required = true) @RequestParam String id,
                                        @ApiParam(value = "passWord", required = true) @RequestParam String password) {
         User user = userJpaRepo.findByUserid(id).orElseThrow(CEmailSigninFailedException::new);
         if (!passwordEncoder.matches(password, user.getPassword()))
@@ -43,7 +43,7 @@ public class SignController {
 
     @ApiOperation(value = "SignUp", notes = "Do signUp")
     @GetMapping(value = "/signup")
-    public CommonResult signin(@ApiParam(value = "userEmail", required = true) @RequestParam String id,
+    public CommonResult signup(@ApiParam(value = "email", required = true) @RequestParam String id,
                                @ApiParam(value = "passWord", required = true) @RequestParam String password,
                                @ApiParam(value = "name", required = true) @RequestParam String name) {
 
