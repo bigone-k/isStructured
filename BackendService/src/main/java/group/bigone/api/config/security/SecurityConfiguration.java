@@ -41,7 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
             .and()
             .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class); // jwt token 필터를 id/password 인증 필터 전에 넣는다
-}
+    }
 
     @Override // ignore check swagger resource
     public void configure(WebSecurity web) {

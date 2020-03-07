@@ -14,7 +14,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Api(tags = {"User"})
 @RequiredArgsConstructor
@@ -53,11 +52,10 @@ public class UserController {
             @ApiParam(value = "userno", required = true) @RequestParam long userno,
             @ApiParam(value = "name", required = true) @RequestParam String username) {
 
-        User originUser = userJpaRepo.findById(userno).orElseThrow(CUserNotFoundException::new);
-        // JPA
-        User user = User.builder()
-                   .name(username)
-                   .build();
+        User user = userJpaRepo.findById(userno).orElseThrow(CUserNotFoundException::new);
+
+        /// TODO : 외부 변경 사항에 대해 어떻게 처리 할 것인가??
+        user.setName(username);
 
         return responseService.getSingleResult(userJpaRepo.save(user));
     }
