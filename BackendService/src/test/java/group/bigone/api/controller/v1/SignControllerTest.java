@@ -7,11 +7,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultHandler;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.result.StatusResultMatchers;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
@@ -19,6 +17,10 @@ import javax.transaction.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringRunner.class)
@@ -34,8 +36,8 @@ public class SignControllerTest {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("id", "trium10@gmail.com");
         params.add("password", "eo1ok12");
-        mockMvc.perform(post("/v1/signin").params(params))
-                .andDo(print())
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/v1/signin").params(params))
+                .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.code").value(0))
@@ -50,7 +52,7 @@ public class SignControllerTest {
         params.add("id", "trium10_" + epochTime + "@gmail.com");
         params.add("password", "eo1ok12");
         params.add("name", "bigone_" + epochTime);
-        mockMvc.perform(post("/v1/signup").params(params))
+        mockMvc.perform(MockMvcRequestBuilders.post("/v1/signup").params(params))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.success").value(true))

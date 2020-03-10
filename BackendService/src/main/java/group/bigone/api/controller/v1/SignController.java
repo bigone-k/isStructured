@@ -12,10 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
@@ -42,7 +39,7 @@ public class SignController {
     }
 
     @ApiOperation(value = "SignUp", notes = "Do signUp")
-    @GetMapping(value = "/signup")
+    @PostMapping(value = "/signup")
     public CommonResult signup(@ApiParam(value = "email", required = true) @RequestParam String id,
                                @ApiParam(value = "passWord", required = true) @RequestParam String password,
                                @ApiParam(value = "name", required = true) @RequestParam String name) {

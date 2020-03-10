@@ -12,6 +12,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import javax.transaction.Transactional;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -25,7 +28,7 @@ public class UserControllerTest {
     @Test
     @WithMockUser(username = "mockUser", roles = {"ADMIN"}) // 가상의 Mock 유저 대입
     public void accessdenied() throws Exception {
-        mockMvc.perform(get("/v1/users")
+        mockMvc.perform(MockMvcRequestBuilders.post("/v1/users"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(forwardedUrl("/exception/accessdenied"));
