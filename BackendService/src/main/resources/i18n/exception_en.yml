@@ -12,4 +12,10 @@ entryPointException:
   msg: "You do not have permission to access this resource."
 accessDenied:
   code: "-1003"
-       msg: "A resource that can not be accessed with the privileges it has."
+  msg: "A resource that can not be accessed with the privileges it has."
+communicationError:
+  code: "-1004"
+  msg: "An error occurred during communication."
+existingUser:
+  code: "-1005"
+  msg: "You are an existing member."

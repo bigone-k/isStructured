@@ -1,9 +1,7 @@
 package group.bigone.api.advice;
 
 import group.bigone.api.Service.ResponseService;
-import group.bigone.api.advice.exception.CAuthenticationEntryPointException;
-import group.bigone.api.advice.exception.CEmailSigninFailedException;
-import group.bigone.api.advice.exception.CUserNotFoundException;
+import group.bigone.api.advice.exception.*;
 import group.bigone.api.model.response.CommonResult;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.bridge.Message;
@@ -33,7 +31,7 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(CUserNotFoundException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    protected CommonResult UserNotFoundException(HttpServletRequest request, CUserNotFoundException e) {
+    protected CommonResult userNotFoundException(HttpServletRequest request, CUserNotFoundException e) {
         return  responseService.getFailResult(Integer.valueOf(getMessage("userNotFound.code")), getMessage("userNotFound.msg"));
     }
 
@@ -51,6 +49,16 @@ public class ExceptionAdvice {
     @ExceptionHandler(AccessDeniedException.class)
     public CommonResult AccessDeniedException(HttpServletRequest request, AccessDeniedException e) {
         return responseService.getFailResult(Integer.valueOf(getMessage("accessDenied.code")), getMessage("accessDenied.msg"));
+    }
+
+    @ExceptionHandler(CCommunicationException.class)
+    public CommonResult communicationException(HttpServletRequest request, CCommunicationException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("communicationError.code")), getMessage("communicationError.msg"));
+    }
+
+    @ExceptionHandler(CUserExistException.class)
+    public CommonResult userExistException(HttpServletRequest request, CUserExistException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("existingUser.code")), getMessage("existingUser.msg"));
     }
 
     private String getMessage(String code) {
