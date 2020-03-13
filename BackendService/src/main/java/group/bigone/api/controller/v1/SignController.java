@@ -6,7 +6,7 @@ import group.bigone.api.advice.exception.CEmailSigninFailedException;
 import group.bigone.api.advice.exception.CUserExistException;
 import group.bigone.api.advice.exception.CUserNotFoundException;
 import group.bigone.api.config.security.JwtTokenProvider;
-import group.bigone.api.domain.User;
+import group.bigone.api.entity.User;
 import group.bigone.api.model.response.CommonResult;
 import group.bigone.api.model.response.SingleResult;
 import group.bigone.api.model.social.KakaoProfile;
@@ -67,7 +67,8 @@ public class SignController {
             @ApiParam(value = "access_token", required = true) @RequestParam String accessToken) {
 
         KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
-        User user = userJpaRepo.findByUidAndProvider(String.valueOf(profile.getId()), provider).orElseThrow(CUserNotFoundException::new);
+        User user = userJpaRepo.findByUseridAndProvider(String.valueOf(profile.getId()), provider).orElseThrow(CUserNotFoundException::new);
+
         return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getUsername()), user.getRoles()));
     }
 
@@ -78,7 +79,7 @@ public class SignController {
                                        @ApiParam(value = "name", required = true) @RequestParam String name) {
 
         KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
-        Optional<User> user = userJpaRepo.findByUidAndProvider(String.valueOf(profile.getId()), provider);
+        Optional<User> user = userJpaRepo.findByUseridAndProvider(String.valueOf(profile.getId()), provider);
         if(user.isPresent())
             throw new CUserExistException();
 
@@ -88,6 +89,7 @@ public class SignController {
                 .name(name)
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
+
         return responseService.getSuccessResult();
     }
 }

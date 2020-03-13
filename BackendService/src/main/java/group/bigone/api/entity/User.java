@@ -1,4 +1,4 @@
-package group.bigone.api.domain;
+package group.bigone.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

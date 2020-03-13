@@ -1,9 +1,9 @@
 server:
   port: 8080
-url:
-  base: http://localhost:8080
 
 spring:
+  url:
+    base: http://localhost:8080
   datasource:
     url: jdbc:h2:tcp://localhost:9092/mem:testdb;
     username: sa
@@ -22,12 +22,13 @@ spring:
     encoding: utf-8
   jwt:
     secret: bigone
+  social:
+    kakao:
+      client_id:  # 앱생성시 받은 REST API 키
+      redirect: /social/login/kakao
+      url:
+        login: https://kauth.kakao.com/oauth/authorize
+        token: https://kauth.kakao.com/oauth/token
+        profile: https://kapi.kakao.com/v2/user/me
 
-social:
-  kakao:
-    client_id:  # 앱생성시 받은 REST API 키
-    redirect: /social/login/kakao
-    url:
-      login: https://kauth.kakao.com/oauth/authorize
-      token: https://kauth.kakao.com/oauth/token
-      profile: https://kapi.kakao.com/v2/user/me
+

@@ -1,9 +1,8 @@
 package group.bigone.api.controller.v1;
 
-import com.sun.org.apache.xpath.internal.objects.XString;
 import group.bigone.api.Service.ResponseService;
 import group.bigone.api.advice.exception.CUserNotFoundException;
-import group.bigone.api.domain.User;
+import group.bigone.api.entity.User;
 import group.bigone.api.model.response.CommonResult;
 import group.bigone.api.model.response.ListResult;
 import group.bigone.api.model.response.SingleResult;

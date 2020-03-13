@@ -11,4 +11,5 @@ public class RetKakaoAuth {
     private  String refresh_token;
     private  long expires_in;
     private  String scope;
+    private  long refresh_token_expires_in;
 }

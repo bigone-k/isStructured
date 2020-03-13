@@ -41,8 +41,8 @@ public class SocialController {
         StringBuilder loginUrl = new StringBuilder()
                 .append(env.getProperty("spring.social.kakao.url.login"))
                 .append("?client_id=").append(kakaoClientId)
-                .append("&amp;response_type=code")
-                .append("&amp;redirect_uri=").append(baseUrl).append(kakaoRedirect);
+                .append("&response_type=code")
+                .append("&redirect_uri=").append(baseUrl).append(kakaoRedirect);
 
         mav.addObject("loginUrl", loginUrl);
         mav.setViewName("social/login");

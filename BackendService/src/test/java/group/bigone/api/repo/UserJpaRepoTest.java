@@ -1,6 +1,6 @@
 package group.bigone.api.repo;
 
-import group.bigone.api.domain.User;
+import group.bigone.api.entity.User;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
