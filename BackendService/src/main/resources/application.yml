@@ -2,21 +2,8 @@ server:
   port: 8080
 
 spring:
-  url:
-    base: http://localhost:8080
-  datasource:
-    url: jdbc:h2:tcp://localhost:9092/mem:testdb;
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate:
-      hbm2ddl.auto: update
-      format_sql: true
-      use_sql_comments : true
-    show_sql: true
-
+  profiles:
+    active: local # 디폴트 환경
   messages:
     basename: i18n/exception
     encoding: utf-8

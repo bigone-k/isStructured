@@ -1,0 +1,21 @@
+logging:
+  level:
+    root: warn
+    com.rest.api: debug
+
+spring:
+  url:
+    base: http://localhost:8080
+  datasource:
+    url: jdbc:h2:tcp://localhost:9092/mem:testdb;
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      properties.hibernate:
+        hbm2ddl.auto: none
+        format_sql: true
+        use_sql_comments: true
+      show_sql: true
+      generate-ddl: true
