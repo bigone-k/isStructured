@@ -1,1 +1,1 @@
-${authInfo}
+${authInfo.toString()}

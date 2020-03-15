@@ -12,4 +12,16 @@ public class RetKakaoAuth {
     private  long expires_in;
     private  String scope;
     private  long refresh_token_expires_in;
+
+    @Override
+    public String toString() {
+        return "RetKakaoAuth{" +
+                "access_token='" + access_token + '\'' +
+                ", access_type='" + access_type + '\'' +
+                ", refresh_token='" + refresh_token + '\'' +
+                ", expires_in=" + expires_in +
+                ", scope='" + scope + '\'' +
+                ", refresh_token_expires_in=" + refresh_token_expires_in +
+                '}';
+    }
 }
