@@ -25,10 +25,10 @@ import java.util.stream.Collectors;
 public class User extends CommonDateEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long userno;
+    private long userNo;
 
     @Column (nullable = false, unique = true, length = 50)
-    private String userid;
+    private String userId;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(length = 100)
@@ -52,7 +52,7 @@ public class User extends CommonDateEntity implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Override
     public String getUsername() {
-        return this.userid;
+        return this.userId;
     }
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
