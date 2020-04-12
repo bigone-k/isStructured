@@ -29,7 +29,7 @@ public class UserController {
     public SingleResult<User> findUserById() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String id = authentication.getName();
-        return responseService.getSingleResult(userJpaRepo.findByUserid(id).orElseThrow(CUserNotFoundException::new));
+        return responseService.getSingleResult(userJpaRepo.findByUserId(id).orElseThrow(CUserNotFoundException::new));
     }
 
 //    @ApiImplicitParams({@ApiImplicitParam(name = "X-AUTH-TOKEN", value = "AccessToken", required = true, dataType = "String", paramType = "header")})

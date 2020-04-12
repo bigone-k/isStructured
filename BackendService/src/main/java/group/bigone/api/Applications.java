@@ -22,7 +22,7 @@ public class Applications {
     }
 
     @Bean
-    public RestTemplate getreRestTemplate() {
+    public RestTemplate getRestTemplate() {
         return new RestTemplate();
     }
 }

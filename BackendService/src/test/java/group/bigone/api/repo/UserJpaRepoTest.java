@@ -19,7 +19,7 @@ public class UserJpaRepoTest {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void when_findByUserid_thenReturnUser() {
+    public void when_findByUserId_thenReturnUser() {
         String userid = "trium10@gmail.com";
         String password = "eo1ok12";
         String name = "bigone";
@@ -31,7 +31,7 @@ public class UserJpaRepoTest {
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
         // when
-        Optional<User> user = userJpaRepo.findByUserid(userid);
+        Optional<User> user = userJpaRepo.findByUserId(userid);
         // then
         Assert.assertNotNull(user);// user객체가 null이 아닌지 체크
         Assert.assertTrue(user.isPresent()); // user객체가 존재여부 true/false 체크

@@ -38,7 +38,7 @@ public class SignController {
     @GetMapping(value = "/signin")
     public SingleResult<String> signin(@ApiParam(value = "email", required = true) @RequestParam String id,
                                        @ApiParam(value = "passWord", required = true) @RequestParam String password) {
-        User user = userJpaRepo.findByUserid(id).orElseThrow(CEmailSigninFailedException::new);
+        User user = userJpaRepo.findByUserId(id).orElseThrow(CEmailSigninFailedException::new);
         if (!passwordEncoder.matches(password, user.getPassword()))
             throw new CEmailSigninFailedException();
 
@@ -52,7 +52,7 @@ public class SignController {
                                @ApiParam(value = "name", required = true) @RequestParam String name) {
 
         userJpaRepo.save(User.builder()
-                .userid(id)
+                .userId(id)
                 .password(passwordEncoder.encode(password))
                 .name(name)
                 .roles(Collections.singletonList("ROLE_USER"))
@@ -67,7 +67,7 @@ public class SignController {
             @ApiParam(value = "access_token", required = true) @RequestParam String accessToken) {
 
         KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
-        User user = userJpaRepo.findByUseridAndProvider(String.valueOf(profile.getId()), provider).orElseThrow(CUserNotFoundException::new);
+        User user = userJpaRepo.findByUserIdAndProvider(String.valueOf(profile.getId()), provider).orElseThrow(CUserNotFoundException::new);
 
         return responseService.getSingleResult(jwtTokenProvider.createToken(String.valueOf(user.getUsername()), user.getRoles()));
     }
@@ -79,12 +79,12 @@ public class SignController {
                                        @ApiParam(value = "name", required = true) @RequestParam String name) {
 
         KakaoProfile profile = kakaoService.getKakaoProfile(accessToken);
-        Optional<User> user = userJpaRepo.findByUseridAndProvider(String.valueOf(profile.getId()), provider);
+        Optional<User> user = userJpaRepo.findByUserIdAndProvider(String.valueOf(profile.getId()), provider);
         if(user.isPresent())
             throw new CUserExistException();
 
         userJpaRepo.save(User.builder()
-                .userid(String.valueOf(profile.getId()))
+                .userId(String.valueOf(profile.getId()))
                 .provider(provider)
                 .name(name)
                 .roles(Collections.singletonList("ROLE_USER"))
