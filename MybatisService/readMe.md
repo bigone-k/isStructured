@@ -1,5 +1,5 @@
 
-## 과제 프로젝트 
+## MyBatis Structured Project 
 
 *서비스*
 - RestAPI Service
