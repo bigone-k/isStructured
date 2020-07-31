@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="idcard">
+    <!--    idcard.insertIDCard : 신분증 저장-->
+    <insert id="insertIDCard" parameterType="IdCard">
+        INSERT INTO IDCARD (userNo, name, birthday, idCardSeqNo )
+        VALUES (#{userNo}, #{name}, #{birthday}, #{idCardSeqNo})
+    </insert>
+
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statistics">
+    <!--    user.selectUser : 회원 조회-->
+    <select id="selectProcessStepReport" >
+        SELECT TOTAL.YM
+             ,SUM(TOTAL.Step1Success) AS Step1Success
+             ,SUM(TOTAL.Step1Failure) AS Step1Failure
+             ,SUM(TOTAL.Step2Success) AS Step2Success
+             ,SUM(TOTAL.Step2Success) AS Step2Success
+             ,SUM(TOTAL.Step3Success) AS Step3Success
+             ,SUM(TOTAL.Step3Success) AS Step3Success
+        FROM
+            (
+                SELECT  DATE_FORMAT(REGDATE, '%Y-%m') AS YM
+                     ,CASE WHEN STATECODE = 2
+                               THEN COUNT(STATECODE) END AS Step1Success
+                     ,CASE WHEN STATECODE = 4
+                               THEN COUNT(STATECODE) END AS Step1Failure
+                     ,0 AS Step2Success
+                     ,0 AS Step2Failure
+                     ,0 AS Step3Success
+                     ,0 AS Step3Failure
+                FROM    ProcessStepHistory
+                WHERE   STEPTYPE = 1
+                GROUP BY DATE_FORMAT(REGDATE, '%Y-%m'), STATECODE
+
+                UNION ALL
+
+                SELECT  DATE_FORMAT(REGDATE, '%Y-%m') AS YM
+                     ,0 AS Step1Success
+                     ,0 AS Step1Failure
+                     ,CASE WHEN STATECODE = 2
+                               THEN COUNT(STATECODE) END AS Step2Success
+                     ,CASE WHEN STATECODE = 4
+                               THEN COUNT(STATECODE) END AS Step2Failure
+                     ,0 AS Step3Success
+                     ,0 AS Step3Failure
+                FROM    ProcessStepHistory
+                WHERE   STEPTYPE = 2
+                GROUP BY DATE_FORMAT(REGDATE, '%Y-%m'), STATECODE
+
+                UNION ALL
+
+                SELECT  DATE_FORMAT(REGDATE, '%Y-%m') AS YM
+                     ,0 AS Step1Success
+                     ,0 AS Step1Failure
+                     ,0 AS Step2Success
+                     ,0 AS Step2Failure
+                     ,CASE WHEN STATECODE = 2
+                               THEN COUNT(STATECODE) END AS Step3Success
+                     ,CASE WHEN STATECODE = 4
+                               THEN COUNT(STATECODE) END AS Step3Failure
+                FROM    ProcessStepHistory
+                WHERE   STEPTYPE = 3
+                GROUP BY DATE_FORMAT(REGDATE, '%Y-%m'), STATECODE
+            ) TOTAL
+        GROUP BY TOTAL.YM;
+    </select>
+</mapper>

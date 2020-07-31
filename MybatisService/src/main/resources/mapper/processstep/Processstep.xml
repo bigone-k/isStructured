@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="processstep">
+    <!--    processstep.selectProcessStep : 회원 조회-->
+    <select id="selectProcessStep" parameterType="Long" resultType="ProcessStep">
+        SELECT *
+        FROM   ProcessStep
+        WHERE  userNo = #{userNo}
+        ORDER BY regDate DESC
+        LIMIT 1
+    </select>
+
+    <!--    processstep.insertProcessStep-->
+    <insert id="insertProcessStep" parameterType="ProcessStep">
+        INSERT INTO ProcessStep (userNo, stepType, stateCode)
+        VALUES (#{userNo}, #{stepType}, #{stateCode});
+    </insert>
+
+    <!--    processstep.updateProcessStep-->
+    <update id="updateProcessStep" parameterType="ProcessStep">
+        UPDATE ProcessStep
+        SET stateCode = #{stateCode}
+        WHERE seqNo = #{seqNo}
+    </update>
+</mapper>
