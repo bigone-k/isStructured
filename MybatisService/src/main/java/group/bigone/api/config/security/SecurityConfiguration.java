@@ -1,6 +1,7 @@
 package group.bigone.api.config.security;
 
-import group.bigone.api.advice.exception.CustomAccessDeniedHandler;
+import group.bigone.api.exception.BusinessException;
+import group.bigone.api.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor
@@ -36,7 +38,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.GET, "/exception/**", "helloworld/**").permitAll() // hellowworld로 시작하는 GET요청 리소스는 누구나 접근가능
                 .anyRequest().hasRole("USER") // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
             .and()
-                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
+                .exceptionHandling().accessDeniedHandler((AccessDeniedHandler) new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED))
             .and()
                 .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
             .and()

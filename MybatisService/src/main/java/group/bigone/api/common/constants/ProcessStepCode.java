@@ -1,6 +1,5 @@
 package group.bigone.api.common.constants;
 
-import group.bigone.api.advice.exception.NoDataCodeException;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -22,7 +21,7 @@ public enum ProcessStepCode {
         return Arrays.stream(ProcessStepCode.values())
                 .filter(group -> group.hasCode(stepCode))
                 .findAny()
-                .orElseThrow(()->new NoDataCodeException());
+                .orElse(ELSE);
     }
 
     public boolean hasCode(short stepCode) {

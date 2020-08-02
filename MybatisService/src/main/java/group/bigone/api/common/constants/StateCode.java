@@ -1,6 +1,5 @@
 package group.bigone.api.common.constants;
 
-import group.bigone.api.advice.exception.NoDataCodeException;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -22,7 +21,7 @@ public enum StateCode {
         return Arrays.stream(StateCode.values())
                 .filter(group -> group.hasCode(stateCode))
                 .findAny()
-                .orElseThrow(() -> new NoDataCodeException());
+                .orElse(WAIT);
     }
 
     public boolean hasCode(short stateCode) {

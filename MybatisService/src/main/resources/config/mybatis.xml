@@ -6,8 +6,8 @@
         <typeAlias alias="hashMap" type="java.util.HashMap" />
         <typeAlias alias="map"     type="java.util.Map" />
 
-        <package name="group.bigone.api.entity.User"/>
-        <package name="group.bigone.api.entity.ProcessStep"/>
-        <package name="group.bigone.api.entity.IDCard"/>
+        <package name="group.bigone.api.domain.user.entity.User"/>
+        <package name="group.bigone.api.domain.user.entity.ProcessStep"/>
+        <package name="group.bigone.api.domain.user.entity.IDCard"/>
     </typeAliases>
 </configuration>

@@ -30,10 +30,6 @@ public class ProcessStepIntercepter extends HandlerInterceptorAdapter {
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         AnnotationProcessStep annotationProcessStep = handlerMethod.getMethodAnnotation(AnnotationProcessStep.class);
 
-        if (annotationProcessStep == null){
-            return true;
-        }
-
         return true;
     }
 
