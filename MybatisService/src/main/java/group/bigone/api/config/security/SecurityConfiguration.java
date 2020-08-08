@@ -1,7 +1,9 @@
 package group.bigone.api.config.security;
 
-import group.bigone.api.exception.BusinessException;
-import group.bigone.api.exception.ErrorCode;
+import group.bigone.api.advice.auth.JwtAuthenticationFilter;
+import group.bigone.api.advice.auth.JwtTokenProvider;
+import group.bigone.api.advice.exception.BusinessException;
+import group.bigone.api.advice.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,10 +39,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                     .antMatchers("/*/signin", "/*/signin/**", "/*/signup", "/*/signup/**", "/social/**").permitAll() // 가입 및 인증 주소는 누구나 접근가능
                     .antMatchers(HttpMethod.GET, "/exception/**", "helloworld/**").permitAll() // hellowworld로 시작하는 GET요청 리소스는 누구나 접근가능
                 .anyRequest().hasRole("USER") // 그외 나머지 요청은 모두 인증된 회원만 접근 가능
-            .and()
-                .exceptionHandling().accessDeniedHandler((AccessDeniedHandler) new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED))
-            .and()
-                .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+//            .and()
+//                .exceptionHandling().accessDeniedHandler((AccessDeniedHandler) new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED))
+//            .and()
+//                .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
             .and()
             .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class); // jwt token 필터를 id/password 인증 필터 전에 넣는다
     }

@@ -1,4 +1,4 @@
-package group.bigone.api;
+package group.bigone.api.advice.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class ServiceAOP {
     private static final Logger logger = LoggerFactory.getLogger("AOP");
 
-    @Pointcut("within(group.bigone.api.controller.v1.*)")
+    @Pointcut("within(group.bigone.api.domain..controller.*)")
     public void controllerPointcut() {
     }
 

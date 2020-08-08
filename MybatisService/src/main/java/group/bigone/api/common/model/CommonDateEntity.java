@@ -1,4 +1,4 @@
-package group.bigone.api.domain.user.model;
+package group.bigone.api.common.model;
 
 import lombok.Getter;
 

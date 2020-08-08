@@ -1,15 +1,15 @@
 package group.bigone.api.domain.user.controller;
 
-import group.bigone.api.exception.BusinessException;
-import group.bigone.api.exception.ErrorCode;
+import group.bigone.api.advice.exception.BusinessException;
+import group.bigone.api.advice.exception.ErrorCode;
 import group.bigone.api.common.constants.GlobalConstants;
-import group.bigone.api.config.security.JwtTokenProvider;
+import group.bigone.api.advice.auth.JwtTokenProvider;
 import group.bigone.api.domain.user.entity.User;
-import group.bigone.api.domain.user.model.response.CommonResult;
-import group.bigone.api.domain.user.model.response.SingleResult;
-import group.bigone.api.domain.user.model.social.KakaoProfile;
-import group.bigone.api.domain.user.service.KakaoService;
-import group.bigone.api.domain.user.service.ResponseService;
+import group.bigone.api.common.model.CommonResult;
+import group.bigone.api.common.model.SingleResult;
+import group.bigone.api.domain.oauth.model.KakaoProfile;
+import group.bigone.api.domain.oauth.service.KakaoService;
+import group.bigone.api.common.service.ResponseService;
 import group.bigone.api.domain.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

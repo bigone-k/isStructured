@@ -1,7 +1,7 @@
-package group.bigone.api.domain.user.service;
+package group.bigone.api.common.service;
 
 import group.bigone.api.common.constants.GlobalConstants;
-import group.bigone.api.config.security.JwtTokenProvider;
+import group.bigone.api.advice.auth.JwtTokenProvider;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

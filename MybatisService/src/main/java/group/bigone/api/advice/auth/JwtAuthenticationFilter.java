@@ -1,6 +1,5 @@
-package group.bigone.api.config.security;
+package group.bigone.api.advice.auth;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 public class JwtAuthenticationFilter extends GenericFilterBean {
-    private  JwtTokenProvider jwtTokenProvider;
+    private JwtTokenProvider jwtTokenProvider;
 
     // Jwt Provier 주입
     public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider) {

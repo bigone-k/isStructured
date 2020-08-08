@@ -1,4 +1,4 @@
-package group.bigone.api.domain.user.model.response;
+package group.bigone.api.common.model;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;

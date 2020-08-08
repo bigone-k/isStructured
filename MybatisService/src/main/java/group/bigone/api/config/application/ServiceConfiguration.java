@@ -1,6 +1,6 @@
-package group.bigone.api.config;
+package group.bigone.api.config.application;
 
-import group.bigone.api.ProcessStepIntercepter;
+import group.bigone.api.advice.intercepter.ProcessStepIntercepter;
 import group.bigone.api.common.constants.GlobalConstants;
 import net.rakugakibox.util.YamlResourceBundle;
 import org.springframework.beans.factory.annotation.Value;

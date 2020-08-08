@@ -1,7 +1,7 @@
 package group.bigone.api.domain.oauth.controller;
 
 import com.google.gson.Gson;
-import group.bigone.api.domain.user.service.KakaoService;
+import group.bigone.api.domain.oauth.service.KakaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;

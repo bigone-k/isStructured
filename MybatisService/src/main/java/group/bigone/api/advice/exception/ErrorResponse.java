@@ -1,4 +1,4 @@
-package group.bigone.api.exception;
+package group.bigone.api.advice.exception;
 
 import lombok.AccessLevel;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package group.bigone.api.config;
+package group.bigone.api.config.application;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,7 @@ public class SwaggerConfiguration {
     @Bean
     public Docket swaggerApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(swaggerInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("group.bigone.api.controller.v1"))
+                .apis(RequestHandlerSelectors.basePackage("group.bigone.api.domain.user.controller"))
                 .paths(PathSelectors.any()) // PathSelectors.ant(“/ v1/**”) 정보성 노출 가능
                 .build()
                 .useDefaultResponseMessages(false); // 기본으로 세팅되는 200,401,403,404 메시지를 표시 하지 않음

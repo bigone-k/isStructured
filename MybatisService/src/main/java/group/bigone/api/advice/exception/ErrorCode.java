@@ -1,4 +1,4 @@
-package group.bigone.api.exception;
+package group.bigone.api.advice.exception;
 
 public enum ErrorCode {
     // Common
