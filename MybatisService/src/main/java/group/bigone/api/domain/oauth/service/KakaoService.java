@@ -1,8 +1,8 @@
 package group.bigone.api.domain.oauth.service;
 
 import com.google.gson.Gson;
-import group.bigone.api.advice.exception.BusinessException;
-import group.bigone.api.advice.exception.ErrorCode;
+import group.bigone.api.global.advice.exception.BusinessException;
+import group.bigone.api.global.advice.exception.ErrorCode;
 import group.bigone.api.domain.oauth.model.KakaoProfile;
 import group.bigone.api.domain.oauth.model.RetKakaoAuth;
 import lombok.RequiredArgsConstructor;

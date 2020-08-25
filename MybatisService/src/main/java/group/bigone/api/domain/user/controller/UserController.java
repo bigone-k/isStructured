@@ -1,12 +1,12 @@
 package group.bigone.api.domain.user.controller;
 
-import group.bigone.api.advice.exception.BusinessException;
-import group.bigone.api.advice.exception.ErrorCode;
-import group.bigone.api.common.service.ResponseService;
+import group.bigone.api.global.advice.exception.BusinessException;
+import group.bigone.api.global.advice.exception.ErrorCode;
+import group.bigone.api.global.common.service.ResponseService;
 import group.bigone.api.domain.user.service.UserService;
 import group.bigone.api.domain.user.entity.User;
-import group.bigone.api.common.model.ListResult;
-import group.bigone.api.common.model.SingleResult;
+import group.bigone.api.global.common.model.ListResult;
+import group.bigone.api.global.common.model.SingleResult;
 import io.swagger.annotations.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -2,7 +2,7 @@ package group.bigone.api.domain.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import group.bigone.api.common.model.CommonDateEntity;
+import group.bigone.api.global.common.model.CommonDateEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
