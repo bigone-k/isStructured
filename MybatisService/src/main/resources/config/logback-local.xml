@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOG_DIR" value="../logs" />
+    <property name="LOG_DIR" value="./logs" />
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- By default, encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
         <encoder>
@@ -20,7 +20,7 @@
 
     <logger name="jdbc" level="OFF"/>
 
-    <logger name="jdbc.sqlonly" level="DEBUG" additivity="false">
+    <logger name="jdbc.sqlonly" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="LOG_FILE" />
     </logger>
@@ -46,11 +46,6 @@
     </logger>
 
     <logger name="jdbc.connection" level="OFF" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="org.thymeleaf" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="LOG_FILE" />
     </logger>
