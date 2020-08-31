@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.exception;
+package group.bigone.api.global.error.exception;
 
 public class CustomAuthenticationEntryPointException extends RuntimeException {
     public CustomAuthenticationEntryPointException(String message, Throwable throwable)

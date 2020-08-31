@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.auth;
+package group.bigone.api.global.config.auth;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

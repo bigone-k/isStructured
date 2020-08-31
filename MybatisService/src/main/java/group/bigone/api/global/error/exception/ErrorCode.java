@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.exception;
+package group.bigone.api.global.error.exception;
 
 public enum ErrorCode {
     // Common
@@ -8,8 +8,8 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR(10003, "Server Error", 500),
     INVALID_TYPE_VALUE(10004, "Invalid Type Value", 400),
     HANDLE_ACCESS_DENIED(10005, "Access is Denied", 403),
-    HANDLE_AUTHENTICATION_ENTRY_POINT(10005, "Authentication Entry Point", 403),
-    ERROR_COMMUNICATION(10006, "An error occurred during communication", 500),
+    HANDLE_AUTHENTICATION_ENTRY_POINT(10006, "Authentication Entry Point", 403),
+    ERROR_COMMUNICATION(10007, "An error occurred during communication", 500),
 
     // User
     USER_NOT_FOUND(20001, "User not Found", 500),

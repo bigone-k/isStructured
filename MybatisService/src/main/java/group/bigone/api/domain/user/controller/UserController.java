@@ -1,7 +1,7 @@
 package group.bigone.api.domain.user.controller;
 
-import group.bigone.api.global.advice.exception.BusinessException;
-import group.bigone.api.global.advice.exception.ErrorCode;
+import group.bigone.api.global.error.exception.BusinessException;
+import group.bigone.api.global.error.exception.ErrorCode;
 import group.bigone.api.global.common.service.ResponseService;
 import group.bigone.api.domain.user.service.UserService;
 import group.bigone.api.domain.user.entity.User;

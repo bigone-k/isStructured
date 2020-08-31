@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.exception;
+package group.bigone.api.global.error.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;

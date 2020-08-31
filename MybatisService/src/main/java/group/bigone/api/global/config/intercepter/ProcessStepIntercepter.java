@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.intercepter;
+package group.bigone.api.global.config.intercepter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

@@ -1,5 +1,8 @@
-package group.bigone.api.global.advice.exception;
+package group.bigone.api.global.error;
 
+import group.bigone.api.global.error.exception.BusinessException;
+import group.bigone.api.global.error.exception.CustomAuthenticationEntryPointException;
+import group.bigone.api.global.error.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package group.bigone.api.domain.user.service;
 
-import group.bigone.api.global.advice.exception.BusinessException;
-import group.bigone.api.global.advice.exception.ErrorCode;
+import group.bigone.api.global.error.exception.BusinessException;
+import group.bigone.api.global.error.exception.ErrorCode;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;

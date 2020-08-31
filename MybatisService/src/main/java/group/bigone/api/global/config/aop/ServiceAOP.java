@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.aop;
+package group.bigone.api.global.config.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

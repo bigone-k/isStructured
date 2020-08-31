@@ -1,5 +1,6 @@
-package group.bigone.api.global.advice.exception;
+package group.bigone.api.global.error;
 
+import group.bigone.api.global.error.exception.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,38 +11,38 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ErrorResponse {
-
     private String message;
     private Integer status;
     private List<FieldError> errors;
     private Integer code;
 
-    private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
-        this.message = code.getMessage();
-        this.status = code.getStatus();
+    private ErrorResponse(final ErrorCode errorCode, final List<FieldError> errors) {
+        this.message = errorCode.getMessage();
+        this.status = errorCode.getStatus();
         this.errors = errors;
-        this.code = code.getCode();
+        this.code = errorCode.getCode();
     }
 
-    private ErrorResponse(final ErrorCode code) {
-        this.message = code.getMessage();
-        this.status = code.getStatus();
-        this.code = code.getCode();
+    private ErrorResponse(final ErrorCode errorCode) {
+        this.message = errorCode.getMessage();
+        this.status = errorCode.getStatus();
+        this.code = errorCode.getCode();
         this.errors = new ArrayList<>();
     }
 
-
-    public static ErrorResponse of(final ErrorCode code, final BindingResult bindingResult) {
-        return new ErrorResponse(code, FieldError.of(bindingResult));
+    public static ErrorResponse of(final ErrorCode errorCode, final BindingResult bindingResult) {
+        return new ErrorResponse(errorCode, FieldError.of(bindingResult));
     }
 
-    public static ErrorResponse of(final ErrorCode code) {
-        return new ErrorResponse(code);
+    public static ErrorResponse of(final ErrorCode errorCode) {
+        return new ErrorResponse(errorCode);
     }
 
-    public static ErrorResponse of(final ErrorCode code, final List<FieldError> errors) {
-        return new ErrorResponse(code, errors);
+    public static ErrorResponse of(final ErrorCode errorCode, final List<FieldError> errors) {
+        return new ErrorResponse(errorCode, errors);
     }
 
     public static ErrorResponse of(MethodArgumentTypeMismatchException e) {

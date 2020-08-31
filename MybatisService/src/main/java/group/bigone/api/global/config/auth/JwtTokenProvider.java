@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.auth;
+package group.bigone.api.global.config.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

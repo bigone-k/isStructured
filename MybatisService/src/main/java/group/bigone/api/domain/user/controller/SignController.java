@@ -1,9 +1,10 @@
 package group.bigone.api.domain.user.controller;
 
-import group.bigone.api.global.advice.exception.BusinessException;
-import group.bigone.api.global.advice.exception.ErrorCode;
+import group.bigone.api.domain.user.model.SignUpRequest;
+import group.bigone.api.global.error.exception.BusinessException;
+import group.bigone.api.global.error.exception.ErrorCode;
 import group.bigone.api.global.common.constants.GlobalConstants;
-import group.bigone.api.global.advice.auth.JwtTokenProvider;
+import group.bigone.api.global.config.auth.JwtTokenProvider;
 import group.bigone.api.domain.user.entity.User;
 import group.bigone.api.global.common.model.CommonResult;
 import group.bigone.api.global.common.model.SingleResult;
@@ -17,6 +18,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -54,14 +56,12 @@ public class SignController {
 
     @ApiOperation(value = "SignUp", notes = "Do signUp")
     @PostMapping(value = "/signup")
-    public CommonResult signup(@ApiParam(value = "email", required = true) @RequestParam String id,
-                               @ApiParam(value = "passWord", required = true) @RequestParam String password,
-                               @ApiParam(value = "name", required = true) @RequestParam String name) {
+    public CommonResult signup(@RequestBody @Valid SignUpRequest signUpRequest) {
 
         userService.insertUser(User.builder()
-                .userId(id)
-                .password(passwordEncoder.encode(password))
-                .name(name)
+                .userId(signUpRequest.getUserId())
+                .password(passwordEncoder.encode(signUpRequest.getPassWord()))
+                .name(signUpRequest.getName())
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
 

@@ -1,4 +1,4 @@
-package group.bigone.api.global.advice.exception;
+package group.bigone.api.global.error.exception;
 
 public class BusinessException extends RuntimeException {
 
@@ -15,7 +15,7 @@ public class BusinessException extends RuntimeException {
     }
 
     public ErrorCode getErrorCode() {
-        return errorCode;
+        return this.errorCode;
     }
 
 }

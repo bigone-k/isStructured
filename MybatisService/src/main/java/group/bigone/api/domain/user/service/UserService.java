@@ -34,7 +34,7 @@ public class UserService {
         hashMap.put("userId", userId);
         hashMap.put("provider", provider);
 
-        User user = (User) sqlSession.selectOne("user.selectProviderUser", hashMap);
+        User user = (User) sqlSession.selectOne("user.selectProviderUser");
 
         return Optional.of(user);
     }

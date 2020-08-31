@@ -1,9 +1,9 @@
-package group.bigone.api.global.config.security;
+package group.bigone.api.global.config.auth;
 
-import group.bigone.api.global.advice.exception.CustomAccessDeniedHandler;
-import group.bigone.api.global.advice.auth.JwtAuthenticationFilter;
-import group.bigone.api.global.advice.auth.JwtTokenProvider;
-import group.bigone.api.global.advice.exception.CustomAuthenticationEntryPoint;
+import group.bigone.api.global.error.exception.CustomAccessDeniedHandler;
+import group.bigone.api.global.config.auth.JwtAuthenticationFilter;
+import group.bigone.api.global.config.auth.JwtTokenProvider;
+import group.bigone.api.global.error.exception.CustomAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
