@@ -1,8 +1,3 @@
-#logging:
-#  level:
-#    root: warn
-#    com.rest.api: debug
-
 spring:
   url:
     base: http://localhost:8080
@@ -10,19 +5,10 @@ spring:
   servlet:
     multipart: #upload File
       file-size-threshold: 1MB
-      location: /Users/bigone/Documents/@git/testcode
+      location: ./uploadFile
       max-file-size: 100MB
       max-request-size: 100MB
 
-#  jpa:
-#    database-platform: org.hibernate.dialect.H2Dialect
-#    properties.hibernate:
-#      hbm2ddl.auto: update
-#      format_sql: true
-#      use_sql_comments: true
-#    show_sql: true
-#    generate-ddl: true
-#    open-in-view: false
   datasource:
     url: jdbc:h2:tcp://localhost:9092/mem:testdb;MODE=MySQL;
     username: sa

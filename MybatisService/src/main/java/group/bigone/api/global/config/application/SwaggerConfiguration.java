@@ -16,14 +16,19 @@ public class SwaggerConfiguration {
     @Bean
     public Docket swaggerApi() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(swaggerInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("group.bigone.api.domain.user.controller"))
-                .paths(PathSelectors.any()) // PathSelectors.ant(“/ v1/**”) 정보성 노출 가능
+                .apis(RequestHandlerSelectors.basePackage("group.bigone.api.domain.*.controller"))
+                .paths(PathSelectors.any())
                 .build()
-                .useDefaultResponseMessages(false); // 기본으로 세팅되는 200,401,403,404 메시지를 표시 하지 않음
+                .useDefaultResponseMessages(false);
+
     }
 
     private ApiInfo swaggerInfo() {
-        return new ApiInfoBuilder().title("BackendService API Documentation")
-                .description("Develop document").build();
+        return new ApiInfoBuilder()
+                .title("BackendService API Documentation")
+                .description("Develop document")
+                .version("1.0")
+                .contact("bigone")
+                .build();
     }
 }

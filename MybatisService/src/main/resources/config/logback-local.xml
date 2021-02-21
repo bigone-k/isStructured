@@ -18,53 +18,51 @@
         </encoder>
     </appender>
 
+    <!--
+    jdbc.sqlonly    : Logs only SQL
+    jdbc.sqltiming  : Logs the SQL, post-execution, including timing execution statistics
+    jdbc.audit      : Logs ALL JDBC calls except for ResultSets
+    jdbc.resultset  : all calls to ResultSet objects are logged
+    jdbc.connection : Logs connection open and close events
+    -->
+
     <logger name="jdbc" level="OFF"/>
 
     <logger name="jdbc.sqlonly" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="jdbc.sqltiming" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="jdbc.audit" level="OFF" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="jdbc.resultset" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="jdbc.resultsettable" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
-    <logger name="jdbc.connection" level="OFF" additivity="false">
+    <logger name="jdbc.connection" level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="reactor.ipc.netty.http.client.HttpClient" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <!-- Custom -->
     <logger name="AOP" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
-
 
     <!-- Root -->
     <root level="DEBUG">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </root>
 </configuration>

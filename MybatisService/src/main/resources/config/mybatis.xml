@@ -2,9 +2,16 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+    <settings>
+        <!--Change snake to camelCase-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <typeAliases>
+        <!-- common Alias -->
         <typeAlias alias="hashMap" type="java.util.HashMap" />
+        <typeAlias alias="linkedHashMap" type="java.util.LinkedHashMap" />
         <typeAlias alias="map"     type="java.util.Map" />
+        <typeAlias alias="list"    type="java.util.List" />
 
         <package name="group.bigone.api.domain.user.entity.User"/>
         <package name="group.bigone.api.domain.user.entity.ProcessStep"/>

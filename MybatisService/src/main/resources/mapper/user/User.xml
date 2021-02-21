@@ -2,53 +2,53 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-    <!--    user.selectUserById : 회원 조회-->
     <select id="selectUserById" parameterType="String" resultType="User">
+        -- user.selectUserById
         SELECT *
         FROM   User
         WHERE  userId = #{userId}
     </select>
 
-    <!--    user.selectUserByNo : 회원 조회-->
     <select id="selectUserByNo" parameterType="Long" resultType="User">
+        -- user.selectUserByNo
         SELECT *
         FROM   User
         WHERE  userNo = #{userNo}
     </select>
 
-    <!--    user.selectUsers-->
     <select id="selectUsers" resultType="User">
+        -- user.selectUsers
         SELECT *
         FROM   User
     </select>
 
-    <!--    user.selectProviderUser-->
     <select id="selectProviderUser" parameterType="hashmap" resultType="User">
+        -- user.selectProviderUser
         SELECT *
         FROM   User
         WHERE  userId = #{userId}
         AND    provider = #{provider}
     </select>
 
-    <!--    user.deleteUser-->
     <delete id="deleteUser" parameterType="String">
+        -- user.deleteUser
         DELETE FROM User
         WHERE  userId = #{userId}
     </delete>
 
-    <!--    user.insertUser-->
     <insert id="insertUser" parameterType="User">
+        -- user.insertUser
         INSERT INTO User (userId, password, name, provider)
         VALUES (#{userId}, #{password}, #{name}, #{provider});
     </insert>
 
-    <!--    user.updateUser-->
     <update id="updateUser">
-        UPDATE USER
-        SET userId = #{userId}
-           ,password = #{password}
-           ,name = #{name}
-           ,provider = #{provider}
-        WHERE userNo = #{userNo}
+        -- user.updateUser
+        UPDATE User
+        SET userId      = #{userId}
+           ,password    = #{password}
+           ,name        = #{name}
+           ,provider    = #{provider}
+        WHERE userNo    = #{userNo}
     </update>
 </mapper>
