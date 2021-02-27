@@ -56,12 +56,6 @@
         <appender-ref ref="STDOUT" />
     </logger>
 
-    <!-- Custom -->
-    <logger name="AOP" level="DEBUG" additivity="false">
-        <appender-ref ref="STDOUT" />
-    </logger>
-
-    <!-- Root -->
     <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>

@@ -1,5 +1,6 @@
 package group.bigone.api.global.config.aop;
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,10 +11,9 @@ import org.springframework.stereotype.Component;
 
 
 @Aspect
+@Slf4j
 @Component
 public class ServiceAOP {
-    private static final Logger logger = LoggerFactory.getLogger("AOP");
-
     @Pointcut("within(group.bigone.api.domain..controller.*)")
     public void controllerPointcut() {
     }
@@ -21,28 +21,24 @@ public class ServiceAOP {
     @Around("controllerPointcut()")
     public Object controllerBefore(final ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         // 메서드 실행 전
-        if (logger.isDebugEnabled()) {
-            logger.info("-------------------------------------------------- BEFORE POINT --------------------------------------------------");
-            logger.info("INFO : {}/{}", proceedingJoinPoint.getSignature().getDeclaringTypeName(), proceedingJoinPoint.getSignature().getName());
+        log.debug("-------------------------------------------------- BEFORE POINT --------------------------------------------------");
+        log.debug("INFO : {}/{}", proceedingJoinPoint.getSignature().getDeclaringTypeName(), proceedingJoinPoint.getSignature().getName());
 
-            StringBuilder stringBuilder = new StringBuilder();
-            int intArgs = proceedingJoinPoint.getArgs().length;
+        StringBuilder stringBuilder = new StringBuilder();
+        int intArgs = proceedingJoinPoint.getArgs().length;
 
-            for(Object object : proceedingJoinPoint.getArgs()) {
-                stringBuilder.append(object);
-                stringBuilder.append(--intArgs != 0 ? ", " : "");
-            }
-
-            logger.info("ARGS : {}", stringBuilder.toString());
+        for(Object object : proceedingJoinPoint.getArgs()) {
+            stringBuilder.append(object);
+            stringBuilder.append(--intArgs != 0 ? ", " : "");
         }
+
+        log.debug("ARGS : {}", stringBuilder.toString());
 
         // 메서드 실행 후
         Object objResult = proceedingJoinPoint.proceed();
 
-        if (logger.isDebugEnabled()) {
-            logger.info("AFTER POINT : {}", objResult);
-            logger.info("-----------------------------------------------------------------------------------------------------------------\n\n");
-        }
+        log.debug("AFTER POINT : {}", objResult);
+        log.debug("-----------------------------------------------------------------------------------------------------------------\n\n");
 
         return objResult;
     }

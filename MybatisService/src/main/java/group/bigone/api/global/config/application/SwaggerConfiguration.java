@@ -28,7 +28,6 @@ public class SwaggerConfiguration {
                 .title("BackendService API Documentation")
                 .description("Develop document")
                 .version("1.0")
-                .contact("bigone")
                 .build();
     }
 }

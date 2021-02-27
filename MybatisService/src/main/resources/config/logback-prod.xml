@@ -22,88 +22,33 @@
 
     <logger name="jdbc.sqlonly" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="jdbc.sqltiming" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="jdbc.audit" level="OFF" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
-    <logger name="jdbc.resultset" level="OFF" additivity="false">
+    <logger name="jdbc.resultset" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
-    <logger name="jdbc.resultsettable" level="WARN" additivity="false">
+    <logger name="jdbc.resultsettable" level="DEBUG" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
-    <logger name="jdbc.connection" level="OFF" additivity="false">
+    <logger name="jdbc.connection" level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="org.thymeleaf" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
     <logger name="reactor.ipc.netty.http.client.HttpClient" level="WARN" additivity="false">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </logger>
 
-    <!-- Custom -->
-    <logger name="INTERCEPTOR" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="CONFIG" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="UTIL" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="EXCEPTION" level="DEBUG" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="FILTER" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="AOP" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="CONTROLLER" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <logger name="SERVICEIMPL" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
-    </logger>
-
-    <!-- Root -->
     <root level="DEBUG">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOG_FILE" />
     </root>
 </configuration>

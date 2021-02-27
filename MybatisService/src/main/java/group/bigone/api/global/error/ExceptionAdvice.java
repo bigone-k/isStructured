@@ -22,9 +22,10 @@ public class ExceptionAdvice {
      * (@RequestBody, @RequestPart)
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        log.error("handleMethodArgumentNotValidException", e);
-        final ErrorResponse response = ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getBindingResult());
+    protected ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+        log.error("handleMethodArgumentNotValidException", exception);
+
+        final ErrorResponse response = ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, exception.getBindingResult());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
@@ -32,9 +33,10 @@ public class ExceptionAdvice {
      * @ModelAttribut 으로 binding error 발생시 BindException 발생한다.
      */
     @ExceptionHandler(BindException.class)
-    protected ResponseEntity<ErrorResponse> handleBindException(BindException e) {
-        log.error("handleBindException", e);
-        final ErrorResponse response = ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getBindingResult());
+    protected ResponseEntity<ErrorResponse> handleBindException(BindException exception) {
+        log.error("handleBindException", exception);
+
+        final ErrorResponse response = ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, exception.getBindingResult());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
@@ -43,9 +45,10 @@ public class ExceptionAdvice {
      * (@RequestParam)
      */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    protected ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e) {
-        log.error("handleMethodArgumentTypeMismatchException", e);
-        final ErrorResponse response = ErrorResponse.of(e);
+    protected ResponseEntity<ErrorResponse> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException exception) {
+        log.error("handleMethodArgumentTypeMismatchException", exception);
+
+        final ErrorResponse response = ErrorResponse.of(exception);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
@@ -53,8 +56,9 @@ public class ExceptionAdvice {
      * HttpRequest Method NotSupported Exception
      */
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    protected ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
-        log.error("handleHttpRequestMethodNotSupportedException", e);
+    protected ResponseEntity<ErrorResponse> handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException exception) {
+        log.error("handleHttpRequestMethodNotSupportedException", exception);
+
         final ErrorResponse response = ErrorResponse.of(ErrorCode.METHOD_NOT_ALLOWED);
         return new ResponseEntity<>(response, HttpStatus.METHOD_NOT_ALLOWED);
     }
@@ -63,8 +67,9 @@ public class ExceptionAdvice {
      * Security Authentication 이 없는 경우 발생함
      */
     @ExceptionHandler(CustomAuthenticationEntryPointException.class)
-    public ResponseEntity<ErrorResponse> handleAuthenticationEntryPointException(CustomAuthenticationEntryPointException e) {
-        log.error("handleAuthenticationEntryPointException", e);
+    public ResponseEntity<ErrorResponse> handleAuthenticationEntryPointException(CustomAuthenticationEntryPointException exception) {
+        log.error("handleAuthenticationEntryPointException", exception);
+
         final ErrorResponse response = ErrorResponse.of(ErrorCode.HANDLE_AUTHENTICATION_ENTRY_POINT);
         return new ResponseEntity<>(response, HttpStatus.valueOf(ErrorCode.HANDLE_AUTHENTICATION_ENTRY_POINT.getStatus()));
     }
@@ -73,8 +78,9 @@ public class ExceptionAdvice {
      * Authentication 객체가 필요한 권한을 보유하지 않은 경우 발생함
      */
     @ExceptionHandler(AccessDeniedException.class)
-    protected ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException e) {
-        log.error("handleAccessDeniedException", e);
+    protected ResponseEntity<ErrorResponse> handleAccessDeniedException(AccessDeniedException exception) {
+        log.error("handleAccessDeniedException", exception);
+
         final ErrorResponse response = ErrorResponse.of(ErrorCode.HANDLE_ACCESS_DENIED);
         return new ResponseEntity<>(response, HttpStatus.valueOf(ErrorCode.HANDLE_ACCESS_DENIED.getStatus()));
     }
@@ -83,9 +89,10 @@ public class ExceptionAdvice {
      * Business Exception in Model
      */
     @ExceptionHandler(BusinessException.class)
-    protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException e) {
-        log.error("handleBusinessException", e);
-        final ErrorCode errorCode = e.getErrorCode();
+    protected ResponseEntity<ErrorResponse> handleBusinessException(final BusinessException exception) {
+        log.error("handleBusinessException", exception);
+
+        final ErrorCode errorCode = exception.getErrorCode();
         final ErrorResponse response = ErrorResponse.of(errorCode);
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));
     }
@@ -94,8 +101,8 @@ public class ExceptionAdvice {
      * 최 상단 Exception
      */
     @ExceptionHandler(Exception.class)
-    protected ResponseEntity<ErrorResponse> handleException(Exception e) {
-        log.error("handleException", e);
+    protected ResponseEntity<ErrorResponse> handleException(Exception exception) {
+        log.error("handleException", exception);
         final ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }

@@ -19,12 +19,7 @@ public class DBMybatisConfig extends AbstractMybatisConfig {
     @Bean
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
         SqlSessionFactoryBean objSqlSessionFactoryBean = new SqlSessionFactoryBean();
-
         sqlSessionFactoryConfig(objSqlSessionFactoryBean, dataSource);
-
-        if (logger.isDebugEnabled()) {
-            logger.debug(objSqlSessionFactoryBean.toString());
-        }
 
         return objSqlSessionFactoryBean.getObject();
     }
