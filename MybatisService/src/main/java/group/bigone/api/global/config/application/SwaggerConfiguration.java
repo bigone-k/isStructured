@@ -8,18 +8,30 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger.web.OperationsSorter;
+import springfox.documentation.swagger.web.UiConfiguration;
+import springfox.documentation.swagger.web.UiConfigurationBuilder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
     @Bean
+    UiConfiguration uiConfiguration() {
+        return UiConfigurationBuilder
+                .builder()
+                .operationsSorter(OperationsSorter.METHOD)
+                .build();
+    }
+
+    @Bean
     public Docket swaggerApi() {
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(swaggerInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("group.bigone.api.domain.*.controller"))
-                .paths(PathSelectors.any())
-                .build()
-                .useDefaultResponseMessages(false);
+        return new Docket(DocumentationType.SWAGGER_2)
+                    .apiInfo(swaggerInfo()).select()
+                    .apis(RequestHandlerSelectors.basePackage("group.bigone.api.domain"))
+                    .paths(PathSelectors.any())
+                    .build()
+                    .useDefaultResponseMessages(false);
 
     }
 
