@@ -36,3 +36,6 @@ build/
 
 ### Application Log File ###
 /logs/
+
+### h2 database File ###
+/*.mv.db
